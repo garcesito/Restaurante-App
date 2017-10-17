@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">RestauranteApp</string>
+    <string name="facebook_app_id">1483425001694261</string>
+    <string name="fb_login_protocol_scheme">fb1483425001694261</string>
+    <string name="correo">Correo electrónico</string>
+    <string name="password">Contraseña</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="registrese">Registrese</string>
+    <string name="registro">Registrar</string>
+    <string name="reppassword">Repetir contraseña</string>
+    <string name="mCerrar">Cerrar sesión</string>
+    <string name="mMain">Menú principal</string>
+    <string name="perfil">Mi perfil</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_base">BaseActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
