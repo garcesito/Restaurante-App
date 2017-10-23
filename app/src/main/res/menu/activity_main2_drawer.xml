@@ -3,15 +3,15 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/nav_menu"
             android:icon="@drawable/ic_menu"
             android:title="Menú" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_menutab"
             android:icon="@drawable/ic_mis_pedidos"
-            android:title="Mis pedidos" />
+            android:title="Menu Tab" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_info"
             android:icon="@drawable/ic_info"
             android:title="Información" />
 
@@ -20,7 +20,7 @@
     <item android:title="Navegación">
         <menu>
             <item
-                android:id="@+id/nav_manage"
+                android:id="@+id/nav_tab"
                 android:icon="@drawable/ic_tabs"
                 android:title="Tabs" />
         </menu>

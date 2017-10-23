@@ -22,4 +22,8 @@
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="Inicio">inicio</string>
+    <string name="platofuerte">Plato Fuerte</string>
+    <string name="bebidas">Bebidas</string>
+    <string name="postres">Postres</string>
 </resources>

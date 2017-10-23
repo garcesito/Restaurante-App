@@ -5,6 +5,6 @@ package com.garcesito.restauranteapp.clases;
  */
 
 public class Utilidades {
-    public static int rotacion=0;
+    public static int rotacion=0, rotacion2=0;
     public static boolean validarPantalla=true;
 }

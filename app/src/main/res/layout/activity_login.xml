@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/iniciar"
-                android:background="@color/red"
+                android:background="@color/colorPrimary"
                 android:textColor="@color/white"
                 android:layout_margin="3dp"
                 android:onClick="iniciar"/>
