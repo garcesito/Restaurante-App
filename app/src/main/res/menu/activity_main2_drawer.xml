@@ -6,23 +6,16 @@
             android:id="@+id/nav_menu"
             android:icon="@drawable/ic_menu"
             android:title="Menú" />
-        <item
-            android:id="@+id/nav_menutab"
-            android:icon="@drawable/ic_mis_pedidos"
-            android:title="Menu Tab" />
-        <item
-            android:id="@+id/nav_info"
-            android:icon="@drawable/ic_info"
-            android:title="Información" />
+
 
     </group>
 
     <item android:title="Navegación">
         <menu>
             <item
-                android:id="@+id/nav_tab"
-                android:icon="@drawable/ic_tabs"
-                android:title="Tabs" />
+                android:id="@+id/nav_info"
+                android:icon="@drawable/ic_info"
+                android:title="Información" />
         </menu>
     </item>
 
