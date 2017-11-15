@@ -87,7 +87,7 @@ public class PlatofuerteFragment extends Fragment {
                     }
                     int uri=R.drawable.hamburguesa;
                     //0x07F08005E
-                    platosfuertes.add(new Platos(nombre+":","$"+precioS,ing,descripcion,uri2));
+                    platosfuertes.add(new Platos(nombre,precioS,ing,descripcion,uri2));
                 }
                 adapterplatos.notifyDataSetChanged();
             }
