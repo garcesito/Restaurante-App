@@ -14,8 +14,11 @@ import android.widget.Toast;
 import com.garcesito.restauranteapp.ProductoActivity;
 import com.garcesito.restauranteapp.R;
 import com.garcesito.restauranteapp.clases.Platos;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+
 
 /**
  * Created by pepel on 8/11/2017.
@@ -47,8 +50,8 @@ public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosView
         Nombre=platos.getNombre();
         holder.tDescripcion.setText(platosfuertes.get(position).getDescripcion());
         holder.tID.setText(Integer.toString(position));
-        holder.iImagen.setImageResource(platosfuertes.get(position).getImagenUri());
-
+        //holder.iImagen.setImageResource(platosfuertes.get(position).getImagenUri());
+        Picasso.with(holder.context).load(platosfuertes.get(position).getImagenUri()).into(holder.iImagen);
         holder.setOnEvento();
     }
 
@@ -83,7 +86,7 @@ public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosView
             bProducto.setOnClickListener(this);
         }
 
-        @Override
+        @Override   
         public void onClick(View view) {
             switch (view.getId()){
                 case R.id.bProducto:

@@ -9,11 +9,11 @@ public class Platos {
     String Precio;
     String Descripcion;
     String[] ing= new String[10];
-    int ImagenUri;
+    String ImagenUri;
 
 
 
-    public Platos(String nombre, String precio, String[] ing, String descripcion, int imagenUri) {
+    public Platos(String nombre, String precio, String[] ing, String descripcion, String imagenUri) {
         Nombre = nombre;
         Precio = precio;
         Descripcion = descripcion;
@@ -21,11 +21,11 @@ public class Platos {
         ImagenUri = imagenUri;
     }
 
-    public int getImagenUri() {
+    public String getImagenUri() {
         return ImagenUri;
     }
 
-    public void setImagenUri(int imagenUri) {
+    public void setImagenUri(String imagenUri) {
         ImagenUri = imagenUri;
     }
 

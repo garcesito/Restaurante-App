@@ -69,7 +69,7 @@ public class PostresFragment extends Fragment {
                     int precio = snapshot.child("Precio").getValue(Integer.class);
                     String precioS= Integer.toString(precio);
                     String descripcion =snapshot.child("Descripcion").getValue(String.class);
-                    int uri2=snapshot.child("Imagen").getValue(Integer.class);
+                    String uri2=snapshot.child("Imagen").getValue(String.class);
 
                     for (int i=0;i<=9;i++)
                     {
