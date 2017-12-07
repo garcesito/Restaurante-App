@@ -71,10 +71,14 @@ public class InfoFragment extends Fragment {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
-                           int turno=snapshot.child("Turno").getValue(Integer.class);
-                           String Turno = String.valueOf(turno);
-                           tTurno.setText(Turno);
-                           break;
+                            try {
+                                int turno=snapshot.child("Turno").getValue(Integer.class);
+                                String Turno = String.valueOf(turno);
+                                tTurno.setText(Turno);
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                            break;
                         }
 
                     }
