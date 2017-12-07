@@ -29,7 +29,7 @@ public class BebidasFragment extends Fragment {
     AdapterPlatos adapterplatos;
     FirebaseDatabase database;
     DatabaseReference myRef;
-    String[] ing= new String[10];
+    //String[] ing= new String[10];
 
     ArrayList<String> listDatos;
     Adaptadorprueba adaptador;
@@ -71,22 +71,18 @@ public class BebidasFragment extends Fragment {
                     String descripcion =snapshot.child("Descripcion").getValue(String.class);
                     String uri2=snapshot.child("Imagen").getValue(String.class);
 
-                    for (int i=0;i<=4;i++)
-                    {
-                        ing[i]=snapshot.child("Ingredientes").child("Ing"+i).getValue(String.class);
-                        //ing[i]="Null";
-                        if(ing[i].equals("Null"))
-                        {
+                    String ing0=snapshot.child("Ingredientes").child("Ing"+0).getValue(String.class);
+                    String ing1=snapshot.child("Ingredientes").child("Ing"+1).getValue(String.class);
+                    String ing2=snapshot.child("Ingredientes").child("Ing"+2).getValue(String.class);
+                    String ing3=snapshot.child("Ingredientes").child("Ing"+3).getValue(String.class);
+                    String ing4=snapshot.child("Ingredientes").child("Ing"+4).getValue(String.class);
+                    String ing5=snapshot.child("Ingredientes").child("Ing"+5).getValue(String.class);
+                    String ing6=snapshot.child("Ingredientes").child("Ing"+6).getValue(String.class);
+                    String ing7=snapshot.child("Ingredientes").child("Ing"+7).getValue(String.class);
+                    String ing8=snapshot.child("Ingredientes").child("Ing"+8).getValue(String.class);
+                    String ing9=snapshot.child("Ingredientes").child("Ing"+9).getValue(String.class);
 
-                        }else
-                        {
-
-                        }
-
-                    }
-
-                    //0x07F08005E
-                    platosfuertes.add(new Platos(nombre,precioS,ing,descripcion,uri2));
+                    platosfuertes.add(new Platos(nombre,precioS,descripcion,uri2,ing0,ing1,ing2,ing3,ing4,ing5,ing6,ing7,ing8,ing9));
                 }
                 adapterplatos.notifyDataSetChanged();
             }

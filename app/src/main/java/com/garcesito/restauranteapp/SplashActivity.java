@@ -15,7 +15,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final long SPLASH_DELAY = 3000;
+    private static final long SPLASH_DELAY = 2000;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     Intent intent;

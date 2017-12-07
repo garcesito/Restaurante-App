@@ -24,7 +24,7 @@ public class Adaptadorprueba extends RecyclerView.Adapter<Adaptadorprueba.ViewHo
 
     @Override
     public ViewHolderDatos onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,parent,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler_pedidos,parent,false);
 
         return new ViewHolderDatos(v);
 

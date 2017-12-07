@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,29 +15,38 @@ import android.widget.Toast;
 import com.garcesito.restauranteapp.ProductoActivity;
 import com.garcesito.restauranteapp.R;
 import com.garcesito.restauranteapp.clases.Platos;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
-
 
 
 /**
  * Created by pepel on 8/11/2017.
  */
 
-public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosViewHolder> {
+public class AdapterPedidos extends RecyclerView.Adapter<AdapterPedidos.PlatosViewHolder> {
 
     static ArrayList<Platos> platosfuertes;
     static String Nombre;
+    static String user;
+    static String item;
 
-    public AdapterPlatos(ArrayList<Platos> platosfuertes) {
+
+
+    public AdapterPedidos(ArrayList<Platos> platosfuertes) {
         this.platosfuertes = platosfuertes;
     }
 
     @Override
     public PlatosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler,null,false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_recycler_pedidos,null,false);
         //PlatosViewHolder holder = new PlatosViewHolder(v);
         return new PlatosViewHolder(v);
     }
@@ -65,6 +75,7 @@ public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosView
         TextView tNombre,tPrecio,tDescripcion,tID;
         ImageView iImagen;
         LinearLayout bProducto;
+        Button bModificar,bQuitar;
 
         Context context;
         public PlatosViewHolder(View itemView) {
@@ -78,21 +89,27 @@ public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosView
             tDescripcion = itemView.findViewById(R.id.tDescripcion);
             iImagen = itemView.findViewById(R.id.iImagen);
             bProducto =itemView.findViewById(R.id.bProducto);
+           // bModificar =itemView.findViewById(R.id.bModificar);
+            bQuitar =itemView.findViewById(R.id.bQuitar);
 
         }
 
         public void setOnEvento() {
 
             bProducto.setOnClickListener(this);
+            //bModificar.setOnClickListener(this);
+            bQuitar.setOnClickListener(this);
+
         }
 
         @Override
         public void onClick(View view) {
+
             switch (view.getId()){
-                case R.id.bProducto:
+                /*case R.id.bModificar    :
 
                     int position = Integer.parseInt(String.valueOf(tID.getText()));
-                    //Toast.makeText(context,"entro a "+tID.getText(),Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context,"entro a "+tID.getText(),Toast.LENGTH_SHORT).show();
                     Intent intent=new Intent(context, ProductoActivity.class);
                     intent.putExtra("ID",tID.getText());
                     intent.putExtra("URL",platosfuertes.get(position).getImagenUri());
@@ -113,6 +130,65 @@ public class AdapterPlatos extends RecyclerView.Adapter<AdapterPlatos.PlatosView
 
 
                     context.startActivity(intent);
+
+                   // Toast.makeText(context,"entro a "+tID.getText(),Toast.LENGTH_SHORT).show();
+
+                break;*/
+                case R.id.bQuitar:
+
+                    final FirebaseDatabase database;
+                    final DatabaseReference myRef;
+                    final int position = Integer.parseInt(String.valueOf(tID.getText()));
+
+                    database = FirebaseDatabase.getInstance();
+                    myRef = database.getReference("RestauranteApp").child("Usuarios");
+
+                    myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+
+                            for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                String correo = snapshot.child("Correo").getValue(String.class);
+                                if(correo.equals("user1@correo.com"))
+                                {
+                                    user =snapshot.child("ID").getValue(String.class);
+                                    //Toast.makeText(context,user,Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                            final DatabaseReference myRef2;
+                            myRef2=database.getReference("RestauranteApp").child("Usuarios").child(user).child("Items");
+
+                            myRef2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    int i=0;
+                                    for (DataSnapshot snapshot: dataSnapshot.getChildren()) {
+                                        if (snapshot.child("Nombre").exists()) {
+                                            if (i == position) {
+                                                item = snapshot.getKey();
+                                            }
+                                            i++;
+
+                                        }
+                                    }
+                                    final DatabaseReference myRef3;
+                                    myRef3=database.getReference("RestauranteApp").child("Usuarios").child(user).child("Items").child(item);
+                                    //Toast.makeText(context,item,Toast.LENGTH_SHORT).show();
+                                    myRef3.removeValue();
+                                }
+
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
 
 
             }
